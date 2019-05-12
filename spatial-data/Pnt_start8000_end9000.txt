@@ -325,7 +325,7 @@ panoID: 4idurCrOuCF0cGpr2pzLog panoDate: 2019-01 longitude: -117.920037 latitude
 panoID: RfJZKxXozU2Xbdm3RXjBBQ panoDate: 2019-01 longitude: -117.920039 latitude: 33.746512
 panoID: dU_38wqQMv64Oe9Br268Mw panoDate: 2019-01 longitude: -117.920041 latitude: 33.746739
 panoID: PiQQO7p_-tjLvzPF04z0IA panoDate: 2019-01 longitude: -117.920040 latitude: 33.746847
-panoID: e5VCBZMbuuGH3M57YMu-8Q panoDate: 2019-01 longitude: -117.920040 latitude: 33.746991
+panoID: 5zsodNZTOhIKiHvFqUTQLw panoDate: 2019-01 longitude: -117.920188 latitude: 33.746990
 panoID: Erzx4mWVIK3BF2mJ2aoUEg panoDate: 2019-01 longitude: -117.920042 latitude: 33.747143
 panoID: 6_RtxXKDGw-Ebs6NzbAeog panoDate: 2019-01 longitude: -117.920043 latitude: 33.747242
 panoID: KCnB2zSfV8xDvvkQumLhDA panoDate: 2019-01 longitude: -117.920044 latitude: 33.747384
@@ -671,10 +671,10 @@ panoID: kZ9iSj99kD2tjyPaQrgAbw panoDate: 2019-02 longitude: -117.872494 latitude
 panoID: wevNsxwjZZhRVXdqcShqjw panoDate: 2019-02 longitude: -117.872491 latitude: 33.755966
 panoID: 1mVAwqiP-rd2blyL19PGYA panoDate: 2019-02 longitude: -117.872488 latitude: 33.756146
 panoID: TZ92QFsBGpfcWEnKRUOTRw panoDate: 2019-02 longitude: -117.872486 latitude: 33.756281
-panoID: lVtKqfJtnwaKR1uvLR9_Ww panoDate: 2019-02 longitude: -117.872483 latitude: 33.756461
+panoID: WnulYavgU4ZNz1RHR_6SQw panoDate: 2019-02 longitude: -117.872484 latitude: 33.756371
 panoID: jPViZYr0yxiki8uCG6RR5Q panoDate: 2019-02 longitude: -117.872481 latitude: 33.756551
 panoID: xycbwI8eubPA5_5kquex9g panoDate: 2019-02 longitude: -117.872478 latitude: 33.756730
-panoID: UvCfFVKHAtflhoKcS0ewmw panoDate: 2019-02 longitude: -117.872475 latitude: 33.756910
+panoID: CEkCBGaryZKHdC7R9FV97g panoDate: 2019-02 longitude: -117.872477 latitude: 33.756820
 panoID: FqHmx72AogO3QLUN_vTrDw panoDate: 2019-02 longitude: -117.872474 latitude: 33.757000
 panoID: kKkgg2u-ay7GPt0LZcVtBw panoDate: 2019-02 longitude: -117.872471 latitude: 33.757180
 panoID: hufEloBLKaaQvAF0a8gZZw panoDate: 2019-02 longitude: -117.872469 latitude: 33.757270
