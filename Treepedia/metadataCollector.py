@@ -105,8 +105,8 @@ def GSVpanoMetadataCollector(samplesFeatureClass,num,ouputTextFolder):
 if __name__ == "__main__":
     import os, os.path
 
-    root = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\spatial-data'
-    inputShp = os.path.join(root,'SA_20m.shp')
+    root = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB'
+    inputShp = os.path.join(root,'LB_20m.shp')
     outputTxt = root
 
     GSVpanoMetadataCollector(inputShp,1000,outputTxt)

@@ -286,7 +286,7 @@ def GreenViewComputing_ogr_6Horizon(GSVinfoFolder, outTXTRoot, greenmonth, key_f
                         URL = "http://maps.googleapis.com/maps/api/streetview?size=400x400&pano=%s&fov=60&heading=%d&pitch=%d&sensor=false&key=AIzaSyBTpzZ-YzKtUs5kYpkISh0rVTJCLfGjK5s"%(panoID,heading,pitch)
 
                         # let the code to pause by 1s, in order to not go over data limitation of Google quota
-                        time.sleep(1)
+                        time.sleep(0.1)
 
                         # classify the GSV images and calcuate the GVI
                         try:
@@ -297,7 +297,7 @@ def GreenViewComputing_ogr_6Horizon(GSVinfoFolder, outTXTRoot, greenmonth, key_f
 
                         # if the GSV images are not download successfully or failed to run, then return a null value
                         except:
-                            raise
+                            input()
                             greenPercent = -1000
                             break
 
@@ -317,9 +317,9 @@ if __name__ == "__main__":
     import itertools
 
 
-    GSVinfoRoot = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\spatial-data'
-    outputTextPath = r'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\spatial-data\\SA_GVR'
-    greenmonth = ['04','05','06','07','08','09']
+    GSVinfoRoot = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB'
+    outputTextPath = r'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB\\SA_GVR'
+    greenmonth = ['01','02','03','04','05','06','07','08','09','10','11','12']
     key_file = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\Treepedia\\keys.txt'
 
     GreenViewComputing_ogr_6Horizon(GSVinfoRoot,outputTextPath, greenmonth, key_file)
