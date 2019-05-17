@@ -283,7 +283,7 @@ def GreenViewComputing_ogr_6Horizon(GSVinfoFolder, outTXTRoot, greenmonth, key_f
                         print("Heading is: ",heading)
 
                         # using different keys for different process, each key can only request 25,000 imgs every 24 hours
-                        URL = "http://maps.googleapis.com/maps/api/streetview?size=400x400&pano=%s&fov=60&heading=%d&pitch=%d&sensor=false&key=AIzaSyBTpzZ-YzKtUs5kYpkISh0rVTJCLfGjK5s"%(panoID,heading,pitch)
+                        URL = "http://maps.googleapis.com/maps/api/streetview?size=400x400&pano=%s&fov=60&heading=%d&pitch=%d&sensor=false&key=AIzaSyCUNoMYwQVJedr9vSI5r6-WY7sGr4TZZfc"%(panoID,heading,pitch)
 
                         # let the code to pause by 1s, in order to not go over data limitation of Google quota
                         time.sleep(0.1)
@@ -297,7 +297,7 @@ def GreenViewComputing_ogr_6Horizon(GSVinfoFolder, outTXTRoot, greenmonth, key_f
 
                         # if the GSV images are not download successfully or failed to run, then return a null value
                         except:
-                            input()
+                            print('SOME SHIT JUST HAPPENED')
                             greenPercent = -1000
                             break
 
@@ -318,7 +318,7 @@ if __name__ == "__main__":
 
 
     GSVinfoRoot = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB'
-    outputTextPath = r'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB\\SA_GVR'
+    outputTextPath = r'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB\\LB_GVR'
     greenmonth = ['01','02','03','04','05','06','07','08','09','10','11','12']
     key_file = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\Treepedia\\keys.txt'
 
