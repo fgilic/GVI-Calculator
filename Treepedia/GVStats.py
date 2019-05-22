@@ -120,6 +120,8 @@ if __name__ == "__main__":
     import sys
     import numpy as np
     import matplotlib.pyplot as plt
+    import seaborn as sns
+
 
     inputGVIres = r'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\SA\\SA_GVR'
     outputShapefile = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\SA\\SA_GVR.shp'
@@ -135,6 +137,13 @@ if __name__ == "__main__":
     print ('The length of the LB is:', len(LB))
     LB = np.array(LB).astype(np.float)
     print(np.average(LB))
+
+    sns.set_style('whitegrid')
+    sns.distplot(SA)
+    plt.show()
+    sns.distplot(LB)
+    plt.show()
+    
 
     plt.boxplot([SA,LB], vert=False, whis=3.1)
     plt.yticks([1, 2], ['Santa Ana', 'Long Beach'])
