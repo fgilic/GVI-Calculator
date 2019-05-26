@@ -207,7 +207,7 @@ if __name__ == "__main__":
     import sys
 
     inputGVIres = r'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB\\LB_GVR'
-    outputShapefile = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB\\LB_GVR.shp'
+    outputShapefile = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB\\LB_GVR_nofrwy.shp'
     lyrname = 'greenView'
     [panoIDlist,panoDateList,LonLst,LatLst,greenViewList] = Read_GVI_res(inputGVIres)
     print ('The length of the panoIDList is:', len(panoIDlist))

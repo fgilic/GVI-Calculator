@@ -283,10 +283,10 @@ def GreenViewComputing_ogr_6Horizon(GSVinfoFolder, outTXTRoot, greenmonth, key_f
                         print("Heading is: ",heading)
 
                         # using different keys for different process, each key can only request 25,000 imgs every 24 hours
-                        URL = "http://maps.googleapis.com/maps/api/streetview?size=400x400&pano=%s&fov=60&heading=%d&pitch=%d&sensor=false&key=AIzaSyCUNoMYwQVJedr9vSI5r6-WY7sGr4TZZfc"%(panoID,heading,pitch)
+                        URL = "http://maps.googleapis.com/maps/api/streetview?size=400x400&pano=%s&fov=60&heading=%d&pitch=%d&sensor=false&key=AIzaSyBJic5Y8mM18xMXeRkbCkVR1561SLrlZ2A"%(panoID,heading,pitch)
 
                         # let the code to pause by 1s, in order to not go over data limitation of Google quota
-                        time.sleep(0.1)
+                        time.sleep(0.01)
 
                         # classify the GSV images and calcuate the GVI
                         try:

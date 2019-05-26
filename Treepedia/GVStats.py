@@ -43,7 +43,7 @@ def Read_GSVinfo_Text(GVI_Res_txt):
         if len(greenView)<2:
             continue
 
-        elif float(greenView) < 0:
+        elif float(greenView) <= 0:
 ##            print(greenView)
             continue
 
@@ -130,6 +130,11 @@ if __name__ == "__main__":
     print ('The length of the SA is:', len(SA))
     SA = np.array(SA).astype(np.float)
     print(np.average(SA))
+    print(np.percentile(SA, 0))
+    print(np.percentile(SA, 25))
+    print(np.percentile(SA, 50))
+    print(np.percentile(SA, 75))
+    print(np.percentile(SA, 100))
 
     inputGVIres = r'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB\\LB_GVR'
     outputShapefile = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB\\LB_GVR.shp'
@@ -137,6 +142,11 @@ if __name__ == "__main__":
     print ('The length of the LB is:', len(LB))
     LB = np.array(LB).astype(np.float)
     print(np.average(LB))
+    print(np.percentile(LB, 0))
+    print(np.percentile(LB, 25))
+    print(np.percentile(LB, 50))
+    print(np.percentile(LB, 75))
+    print(np.percentile(LB, 100))
 
     sns.set_style('whitegrid')
     sns.distplot(SA)
