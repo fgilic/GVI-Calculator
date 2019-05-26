@@ -1,43 +1,41 @@
 # Treepedia
 ## Sustainable Societies, CHP@UCI
 
-<hr>
-
 ### About this project 
 Sustainable Socieites is a six-quarter course sequence dedicated to an interdisciplinary exploration of sustainability. For our capstone project, we are comparing urban greenspace in Santa Ana, CA, and Long Beach, CA, and we hope to correlate differences in greenspace to health and economic impacts in the two cities. 
 
 To investigate greenspace, we will be looking at 1) policy, 2) parkscore, and 3) urban tree canopy cover. And this repo contains the code that performs these calculations using Google streetview images, as well as preliminary results. 
 
-<hr>
-
 ### Technical modifications to original
 The original Treepedia code has been modified in the following ways:
 <ul>
   <li>Python 2.7 -> Python 3.5</li>
-  <li>Instead of Ostu's method from pymeanshift, used [Felzenszwaib](https://scikit-image.org/docs/dev/api/skimage.segmentation.html?highlight=felzenszwalb#skimage.segmentation.felzenszwalb) (which uses MST clustering) from SciKit to segment streetview images</li>
+  <li>Instead of Ostu's method from pymeanshift, used <a href="https://scikit-image.org/docs/dev/api/skimage.segmentation.html?highlight=felzenszwalb#skimage.segmentation.felzenszwalb" target="_blank" rel="noreferrer noopenner">Felzenszwaib</a>, or MST clustering, from SciKit to segment streetview images</li>
   <li>Make box-plots of result GVI</li>
 </ul>
 
 Our Santa Ana boundary & street shape files came from: http://gis-santa-ana.opendata.arcgis.com/search?tags=transportation
 
 Our Long Beach boundary & street shape files came from: http://datalb.longbeach.gov/datasets/0cabfa8dcd7a4aebb4cbfaece861697b_2
-(Note: that needs to be converted to ERSI WGS84, which you can do with QGIS)
+(Note: needs to be converted to ERSI WGS84, which you can do with QGIS)
 
 ### Findings and conclusions
 <p align="center">
-  <img width="460" height="300" src="https://github.com/the-rango/Treepedia_Public/images/master/Comp_nofrwy.png">
+  <img width="460" height="300" src="https://github.com/the-rango/Treepedia_Public/blob/master/images/Comp_nofrwy.png">
+ </p>
+ <p align="center">
   A box-plot of GVI distributions
 </p>
 <div>
   <div style="float: left; width: 50%; padding: 5px;">
-  <img style="width:100%" src="https://github.com/the-rango/Treepedia_Public/SA/SA_GVR.png">
+  <img style="width:100%" src="https://github.com/the-rango/Treepedia_Public/blob/master/SA/SA_GVR.jpg">
     <p>Santa Ana</p>
 </div>
   
 <div>
   <div style="float: left; width: 50%; padding: 5px;">
-  <img style="width:100%" src="https://github.com/the-rango/Treepedia_Public/LB/LB_GVR_nofrwy.png">
-    <p>Santa Ana</p>
+  <img style="width:100%" src="https://github.com/the-rango/Treepedia_Public/blob/master/LB/LB_GVR_nofrwy.jpg">
+    <p>Long Beach</p>
 </div>
 
 #### Discussion and insights
