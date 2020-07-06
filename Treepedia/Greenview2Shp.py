@@ -3,7 +3,7 @@
 # Copyright(C) Xiaojiang Li, Ian Seiferling, Marwa Abdulhai, Senseable City Lab, MIT
 
 
-def read_gsv_info_text(gvi_res_txt):
+def read_gsv_info_text(gvi_res_txt, pano_id_list_all):
     """
     This function is used to read the information in text files or folders
     the function will remove the duplicate sites and only select those sites
@@ -14,6 +14,7 @@ def read_gsv_info_text(gvi_res_txt):
 
     Parameters:
         gvi_res_txt: the file name of the GSV information txt file
+        pano_id_list_all: list of processed panorama id (for removing duplicates)
     """
 
     # empty list to save the GVI result and GSV metadata
@@ -43,11 +44,11 @@ def read_gsv_info_text(gvi_res_txt):
             continue
 
         elif float(green_view) < 0:
-            print(green_view)
+            print(f'{pano_id}: {green_view}')
             continue
 
         # remove the duplicated panorama id
-        if pano_id not in pano_id_lst:
+        if (pano_id not in pano_id_lst) and (pano_id not in pano_id_list_all):
             pano_id_lst.append(pano_id)
             pano_date_lst.append(pano_date)
             pano_lon_lst.append(lon)
@@ -87,7 +88,7 @@ def read_gvi_res(gvi_res):
         all_txt_files = os.listdir(gvi_res)
 
         for txt_file in all_txt_files:
-            print('k')
+            # print('k')
             # only read the text file
             if not txt_file.endswith('.txt'):
                 continue
@@ -96,7 +97,7 @@ def read_gvi_res(gvi_res):
 
             # call the function to read txt file to a list
             [pano_id_lst_tem, pano_date_lst_tem, pano_lon_lst_tem, pano_lat_lst_tem, green_view_lst_tem] = \
-                read_gsv_info_text(txtfilename)
+                read_gsv_info_text(txtfilename, pano_id_lst)
 
             pano_id_lst = pano_id_lst + pano_id_lst_tem
             pano_date_lst = pano_date_lst + pano_date_lst_tem
@@ -104,9 +105,11 @@ def read_gvi_res(gvi_res):
             pano_lat_lst = pano_lat_lst + pano_lat_lst_tem
             green_view_lst = green_view_lst + green_view_lst_tem
 
-    else:  # for single txt file
-        [pano_id_lst_tem, pano_date_lst_tem, pano_lon_lst_tem, pano_lat_lst_tem, green_view_lst_tem] = \
-            read_gsv_info_text(txtfilename)
+    elif gvi_res.endswith('.txt'):  # for single txt file
+        [pano_id_lst, pano_date_lst, pano_lon_lst, pano_lat_lst, green_view_lst] = read_gsv_info_text(gvi_res, [])
+
+    else:
+        print('Input is not a folder nor a txt file.')
 
     return pano_id_lst, pano_date_lst, pano_lon_lst, pano_lat_lst, green_view_lst
 
@@ -129,7 +132,6 @@ def create_point_feature_ogr(output_shapefile, lon_lst, lat_lst, pano_id_list, p
     Copyright(c) Xiaojiang Li, Senseable city lab
 
     last modified by Xiaojiang li, MIT Senseable City Lab on March 27, 2018
-
     """
 
     import ogr
@@ -198,8 +200,8 @@ def create_point_feature_ogr(output_shapefile, lon_lst, lat_lst, pano_id_list, p
 if __name__ == "__main__":
     import os
 
-    inputGVIres = r'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB\\LB_GVR'
-    output_shapefile = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB\\LB_GVR_nofrwy.shp'
+    inputGVIres = '..\\kastela\\GVI_values'
+    output_shapefile = '..\\kastela\\GVI_points.shp'
     lyrname = 'greenView'
     [pano_id_list, pano_date_list, lon_lst, lat_lst, green_view_lst] = read_gvi_res(inputGVIres)
     print('The length of the panoIDList is:', len(pano_id_list))

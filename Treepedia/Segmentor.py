@@ -5,7 +5,7 @@ import skimage.segmentation as seg
 
 def image_show(image, nrows=1, ncols=1, cmap='gray'):
     fig, ax = plt.subplots(nrows=nrows, ncols=ncols, figsize=(8, 8))
-    ax.imshow(image, cmap='gray')
+    ax.imshow(image, cmap)
     ax.axis('off')
     return fig, ax
 

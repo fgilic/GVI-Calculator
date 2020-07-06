@@ -201,6 +201,7 @@ def green_view_computing_ogr_6horizon(gsv_info_folder, out_txt_root, greenmonth,
     # set a series of heading angle
     heading_arr = 360 / 6 * numpy.array([0, 1, 2, 3, 4, 5])
 
+    pano_id_done_list = []
     # number of GSV images for Green View calculation, in my original Green View View paper, I used 18 images,
     # in this case, 6 images at different horizontal directions should be good.
     num_gsv_img = len(heading_arr) * 1.0
@@ -271,9 +272,16 @@ def green_view_computing_ogr_6horizon(gsv_info_folder, out_txt_root, greenmonth,
                     lat = pano_lat_lst[i]
                     lon = pano_lon_lst[i]
 
+                    # avoid multiple GVI calculation for the same panorama id
+                    if pano_id in pano_id_done_list:
+                        continue
+
+                    pano_id_done_list.append(pano_id)
+
                     # get a different key from the key list each time
-                    idx = i % len(keylist)
-                    key = keylist[idx]
+                    # idx = i % len(keylist)
+                    # key = keylist[idx]
+                    key = 'AIzaSyCmy2XHaiYUfaVvIwQgIenxIPSIJzvJpsA'
 
                     # calculate the green view index
                     green_percent = 0.0
@@ -316,8 +324,8 @@ def green_view_computing_ogr_6horizon(gsv_info_folder, out_txt_root, greenmonth,
 if __name__ == "__main__":
     import os.path
 
-    gsv_info_root = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB'
-    output_text_path = r'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB\\LB_GVR'
+    gsv_info_root = '..\\kastela\\metadata'
+    output_text_path = '..\\kastela\\GVI_values'
     greenmonth = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
     key_file = 'keys.txt'
 

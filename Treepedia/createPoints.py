@@ -25,8 +25,7 @@ def create_points(inshp, outshp, mini_dist):
     import os.path
     from shapely.geometry import shape, mapping
     from shapely.ops import transform
-    from functools import partial
-    import pyproj
+    from pyproj import Transformer
     from fiona.crs import from_epsg
 
     s = {'trunk_link', 'tertiary', 'motorway', 'motorway_link', 'steps', None, ' ', 'pedestrian', 'primary',
@@ -69,29 +68,27 @@ def create_points(inshp, outshp, mini_dist):
         'properties': {'id': 'int'},
     }
 
-    # Create pointS along the streets
-    with fiona.drivers():
+    # Create points along the streets
+    with fiona.Env():
         # with fiona.open(outshp, 'w', 'ESRI Shapefile', crs=source.crs, schema) as output:
         with fiona.open(outshp, 'w', crs=from_epsg(4326), driver='ESRI Shapefile', schema=schema) as output:
+            transformation1 = Transformer.from_crs('EPSG:4326', 'EPSG:3857', always_xy=True).transform
+            transformation2 = Transformer.from_crs('EPSG:3857', 'EPSG:4326', always_xy=True).transform
             for line in fiona.open(temp_cleaned_streetmap):
                 first = shape(line['geometry'])
 
                 try:
                     # convert degree to meter, in order to split by distance in meter
                     # EPSG:3857 is pseudo WGS84 the unit is meter
-                    project = partial(pyproj.transform, pyproj.Proj(init='EPSG:4326'), pyproj.Proj(init='EPSG:3857'))
-
-                    line2 = transform(project, first)
+                    line2 = transform(transformation1, first)
                     # print(line2.coords)
                     # linestr = list(line2.coords)
                     dist = mini_dist  # set
                     for distance in range(0, int(line2.length), dist):
                         point = line2.interpolate(distance)
 
-                        # convert the local projection back the the WGS84 and write to the output shp
-                        project2 = partial(pyproj.transform, pyproj.Proj(init='EPSG:3857'),
-                                           pyproj.Proj(init='EPSG:4326'))
-                        point = transform(project2, point)
+                        # convert the local projection back to the WGS84 and write to the output shp
+                        point = transform(transformation2, point)
                         output.write({'geometry': mapping(point), 'properties': {'id': 1}})
                 except:
                     print("You should make sure the input shapefile is WGS84")
@@ -110,7 +107,7 @@ if __name__ == "__main__":
     import os.path
 
     root = '..\\kastela'
-    inshp = os.path.join(root, 'LB_Streets.shp')
-    outshp = os.path.join(root, 'LB_20m.shp')
+    inshp = os.path.join(root, 'streets_wgs84.shp')
+    outshp = os.path.join(root, 'osm_points.shp')
     mini_dist = 20  # the minimum distance between two generated points in meter
     create_points(inshp, outshp, mini_dist)

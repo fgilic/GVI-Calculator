@@ -21,6 +21,7 @@ def gsv_pano_metadata_collector(samples_feature_class, num, output_text_folder):
     import osr
     import time
     import os.path
+    import math
 
     if not os.path.exists(output_text_folder):
         os.makedirs(output_text_folder)
@@ -39,7 +40,7 @@ def gsv_pano_metadata_collector(samples_feature_class, num, output_text_folder):
     # loop all the features in the featureclass
     # feature = layer.GetNextFeature()
     feature_num = layer.GetFeatureCount()
-    batch = int(feature_num / num)
+    batch = int(math.ceil(feature_num / num))
     print(batch)
 
     for b in range(batch):
@@ -67,11 +68,12 @@ def gsv_pano_metadata_collector(samples_feature_class, num, output_text_folder):
                 # transform the current projection of input shapefile to WGS84
                 # WGS84 is Earth centered, earth fixed terrestrial ref system
                 geom.Transform(transform)
-                lon = geom.GetX()
-                lat = geom.GetY()
+                # TODO check what is happening with axis order
+                lon = geom.GetY()
+                lat = geom.GetX()
 
                 # get the meta data of panoramas
-                url_address = r'http://maps.google.com/cbk?output=xml&ll=%s,%s' % (lat, lon)
+                url_address = 'http://maps.google.com/cbk?output=xml&ll=%s,%s' % (lat, lon)
 
                 time.sleep(0.05)
                 # the output result of the meta data is a xml object
@@ -105,8 +107,8 @@ def gsv_pano_metadata_collector(samples_feature_class, num, output_text_folder):
 if __name__ == "__main__":
     import os.path
 
-    root = 'C:\\Users\\rangu_uhpmatw\\Documents\\GitHub\\customs\\Treepedia_Public\\LB'
-    inputShp = os.path.join(root, 'LB_20m.shp')
-    outputTxt = root
+    root = '..\\kastela\\'
+    inputShp = os.path.join(root, 'osm_points.shp')
+    outputTxt = root + '\\metadata'
 
     gsv_pano_metadata_collector(inputShp, 1000, outputTxt)
